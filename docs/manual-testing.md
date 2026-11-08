@@ -1,6 +1,10 @@
 # Checks to run by hand
 
-Automated tests can't hold a key, speak, or unplug a microphone. Run these on real Macs before a release, with the build installed on every Mac.
+Run affected sections on real Macs before release, with the candidate installed on each Mac. Use test accounts and synthetic content. Installing, recording and contacting services require a deliberate request.
+
+Start with [Dictation](#dictation), [Commands](#commands), [Workspaces](#workspaces-on-real-desks) and [History and privacy](#history-and-privacy). For multi-Mac changes, also check [Several Macs](#several-macs) and [Removing a Mac](#removing-a-mac). Release checks: [cleanup](#release-cleanup) and [updates](#in-app-updates).
+
+The detailed cases below are acceptance criteria; build and automated test commands live in [Development](development.md).
 
 ## Dictation
 

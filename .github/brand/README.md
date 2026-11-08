@@ -1,6 +1,6 @@
 # Dictator repository artwork
 
-The README follows the Dictator product page: its copy, its order and its look.
+The README uses a hero from the Dictator product artwork. The other posters remain available here for product and community pages.
 
 ## Files
 

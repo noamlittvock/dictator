@@ -1,38 +1,43 @@
 # Speech server
 
-A Python service that turns recordings into text on one Mac: Whisper (through MLX) for speech to text, then a clean-up model through the local Ollama. The Mac app sends it audio and pastes what comes back.
+Optional Python inference service for Dictator: Whisper through MLX, then clean-up through local Ollama. Models can also [run inside the app](../docs/architecture-dictation.md), so you don't need this server for a single-Mac setup.
 
-The models are in memory only while dictation needs them. The server starts with nothing loaded, the app's `POST /warm` at key press loads them while you speak, and they unload after five quiet minutes (`DICTATION_IDLE_UNLOAD_S`). A dictation after a long idle still works without `/warm`; it just waits for the load (about a second longer).
+The server binds only to its Mac's Tailscale address on port 7878. It starts with models unloaded, warms them at key press and unloads after five idle minutes. If clean-up can't become ready within five seconds, it returns the transcript with dictionary replacements (`X-Polish: unavailable`).
 
-If Ollama is busy loading the clean-up model, speech recognition still returns the words: the server waits at most five seconds for clean-up to become ready, then sends the Whisper transcript with dictionary replacements. A later dictation can use clean-up once the model is ready. The response's `X-Polish: unavailable` header and server log identify this fallback.
-
-It's one of the places Dictator can turn speech into text. Speech models can also run inside the app on any Mac (see [docs/architecture.md](../docs/architecture.md)); Settings › Your Macs sets the order in which they're tried.
+[Setup](#running-it) · [API](#endpoints) · [Configuration](#configuration) · [Tests](#tests)
 
 ## Endpoints
 
 It listens only on the Mac's Tailscale address, port 7878, and refuses to start without one.
 
-`POST /transcribe` and `POST /warm` require `Authorization: Bearer <key>`; a missing or wrong key returns an empty 401 response before any audio is processed or models are prepared. `GET /health` stays open for reachability checks and never exposes the key.
+`POST /transcribe` and `POST /warm` require `Authorization: Bearer <key>`. A wrong or missing key returns an empty 401 before processing. `GET /health` needs no key and never reveals it.
 
-At startup the server reads `DICTATION_TOKEN_FILE`, defaulting to `~/Library/Application Support/Dictator/speech-server.token`. If missing, it atomically creates a random key with owner-only permissions (0600). An unreadable or empty key file prevents startup; the server never runs without authentication. The key is never logged.
+### Keys
 
-The app only reads that server-owned file; it never creates or overwrites it. A pasted key in Settings › Advanced › Speech server key is saved separately as `~/Library/Application Support/Dictator/speech-server-remote.token`, atomically with owner-only permissions (0600). Neither key is mirrored, logged, saved in history or put in `UserDefaults`. No migration is needed because pasted keys have not shipped yet.
+Startup reads `DICTATION_TOKEN_FILE`, defaulting to `~/Library/Application Support/Dictator/speech-server.token`. A missing file is created atomically with a random key and 0600 permissions. Empty or unreadable files prevent startup.
 
-For each request, the app chooses the key using the request host. Loopback and this Mac’s own interface addresses (from `getifaddrs`, including its Tailscale address) use `speech-server.token` only. For any other host it uses `speech-server-remote.token`, falling back to `speech-server.token` when no remote key is saved. Thus `http://100.101.102.103:7878` uses the local server key on the Mac that owns that address. If you override `DICTATION_TOKEN_FILE`, the app must use the same environment override to read the local server key. All remote servers, including backups, must accept the same pasted remote key.
+The app reads that local file without overwriting it. A key pasted in **Settings › Advanced › Speech server key** is saved separately in `speech-server-remote.token` with 0600 permissions. Keys never enter logs, history, UserDefaults or shared settings.
 
-When using a server on another Mac, paste its key on each Mac that sends requests, including the main Mac and any Mac doing direct recovery. Live dictation from a connected Mac is sent by the main Mac, so its key alert names the main Mac and has no button that opens the connected Mac’s settings. Direct recovery on a connected Mac keeps its local settings button.
+Requests to loopback or this Mac's own interface addresses use the local key only. Other hosts use the pasted remote key, falling back to the local key. If you override `DICTATION_TOKEN_FILE`, give the app the same override. Remote backup servers must accept the same remote key.
 
-Removing a Mac in Settings › Your Macs rotates Dictator’s **pairing** token. It does not change the speech server key. A removed or lost Mac may still have a copied key and be able to call the speech server directly, even when that server runs on the main Mac or is configured through loopback. The removal confirmation warns whenever a speech server address is configured.
+Live dictation from connected Macs is sent by the main Mac, so configure its key too. Connected Macs need a key for direct recovery when the main Mac is away.
 
-To change the speech server key:
+### Rotate a key
 
-1. On the server’s Mac, delete its key file: `DICTATION_TOKEN_FILE`, or `~/Library/Application Support/Dictator/speech-server.token` by default.
-2. Restart the existing managed speech server with `launchctl bootout` followed by `launchctl bootstrap`. Startup creates a fresh random 0600 key. Do not start a second server by hand.
-3. On the server’s Mac, use Settings › Advanced › Copy Key, then paste it in Settings › Advanced › Speech server key on any other Mac that needs it, including the main Mac when it sends requests to another Mac. Connected Macs need it only to reach the server while their main Mac is away; a recording they retry while connected falls back to the main Mac. If the server’s Mac doesn’t run the app, copy the key from its key file. The server’s own Mac reads its new local key automatically.
+Removing a Mac rotates its pairing credential, **not this speech-server key**. A removed Mac with a copied key can still call the server. To revoke it:
 
-Backups that use the remote key must accept the same replacement. Keep it private; do not give it to the removed Mac or put it in logs, history or shared settings. Saved history is unchanged.
+1. Delete the server's key file on the server Mac.
+2. Restart the managed server with `launchctl bootout`, then `launchctl bootstrap`. It creates a fresh key. Never start a second copy by hand.
+3. Use **Settings › Advanced › Copy Key** on that Mac and paste it into the requesting Macs' Speech server key setting. Without the app, read the server's key file privately.
+4. Update remote backups to accept the replacement. Don't give it to the removed Mac.
 
-The app allows `https://` speech addresses with any host. With `http://`, it accepts only loopback, Tailscale IPv4 (`100.64.0.0/10`), Tailscale IPv6 (`fd7a:115c:a1e0::/48`) and names ending in `.ts.net`. For another address, use HTTPS or change it to the server's Tailscale address in Settings › Advanced. Redirects are refused, so neither audio nor the key follows them. A missing key or refused saved address is explained when dictation fails, with the recording kept for recovery; a working backup can still provide text.
+The server Mac reads its new local key automatically. Saved history is unchanged.
+
+### Addresses
+
+HTTPS accepts any host. HTTP accepts only loopback, Tailscale IPv4 (`100.64.0.0/10`), Tailscale IPv6 (`fd7a:115c:a1e0::/48`) and `.ts.net` names. Redirects are refused. Missing keys and invalid addresses produce an explained failure with recovery audio retained; configured backups can still supply text.
+
+### Requests
 
 | Endpoint | What it does |
 |---|---|
@@ -63,7 +68,7 @@ The clean-up prompt, explicit command preparation, and the check that the model 
 
 It runs under the LaunchAgent `dev.noamlitt.dictation.server`. `launchd/dictation-server.plist.template` has the definition; fill in its `__REPO__` and `__HOME__` placeholders (the comment at its top shows the `sed` line) before installing.
 
-**Upgrade order: install the updated app first on every Mac that sends speech requests, then restart the server.** The updated app still works with older servers that ignore the header. After the updated server starts, same-Mac requests pick up its key automatically; add the key in Advanced on other requesting Macs before using it there. Older apps cannot authenticate to the updated server. No existing take archive is deleted by this upgrade.
+**Upgrade order: install the updated app first on every Mac that sends speech requests, then restart the server.** Apps that send no key cannot authenticate. Same-Mac requests read the key automatically; configure it in Advanced on other requesting Macs.
 
 ```bash
 scripts/server-bootstrap.sh --dry-run   # show the setup steps
