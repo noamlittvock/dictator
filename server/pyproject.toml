@@ -1,0 +1,30 @@
+[project]
+name = "dictation-server"
+version = "0.1.0"
+description = "Dictator's speech server: Whisper and clean-up on one Mac."
+requires-python = ">=3.13,<3.14"
+
+# Direct dependencies only; the full set is pinned in pinned-versions.txt.
+dependencies = [
+    # Whisper for speech to text; clean-up calls the Mac's Ollama over HTTP.
+    "mlx-whisper==0.4.3",          # ASR stage (Apple-native MLX); Whisper-small at runtime
+    "torch==2.11.0",               # transitive of mlx-whisper; kept as a direct pin to lock the version
+    # Web stack
+    "fastapi==0.136.1",
+    "uvicorn[standard]==0.46.0",
+    "httpx==0.28.1",
+    # Audio
+    "numpy==2.4.4",
+    "scipy==1.17.1",
+    "soundfile==0.13.1",
+    # Test
+    "pytest==9.0.3",
+    "pytest-asyncio==1.3.0",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = []

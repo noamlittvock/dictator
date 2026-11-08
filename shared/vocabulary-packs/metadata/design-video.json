@@ -1,0 +1,17 @@
+{
+  "id": "design-video",
+  "name": "Design and video",
+  "summary": "Design tools, video formats and production terms.",
+  "language": "en",
+  "apps": [
+    "com.figma.Desktop",
+    "com.adobe.Photoshop",
+    "com.adobe.Illustrator",
+    "com.adobe.InDesign",
+    "com.adobe.AfterEffects",
+    "com.adobe.Premiere",
+    "com.apple.FinalCut",
+    "com.blackmagic-design.DaVinciResolve",
+    "org.blenderfoundation.blender"
+  ]
+}

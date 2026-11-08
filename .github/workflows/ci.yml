@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-test:
+    runs-on: macos-15
+    timeout-minutes: 45
+    env:
+      # Apple speech APIs require the macOS 26 SDK. This Xcode is in the runner image.
+      DEVELOPER_DIR: /Applications/Xcode_26.2.app/Contents/Developer
+    steps:
+      # Major tags are used because action commit SHAs were not confirmed offline.
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install xcodegen
+        run: brew install xcodegen
+      - name: Generate Xcode project
+        working-directory: swift-client
+        run: xcodegen generate
+      - name: Build without signing
+        working-directory: swift-client
+        run: >-
+          xcodebuild -project Dictator.xcodeproj -scheme Dictator -destination platform=macOS
+          -derivedDataPath ../.dd -clonedSourcePackagesDirPath ../.spm
+          CODE_SIGNING_ALLOWED=NO -IDEPackageSupportDisableManifestSandbox=YES
+          -IDEPackageSupportDisablePackagePluginSandbox=YES build
+      - name: Run Swift tests
+        working-directory: swift-client
+        run: >-
+          xcodebuild -project Dictator.xcodeproj -scheme Dictator -destination platform=macOS
+          -derivedDataPath ../.dd -clonedSourcePackagesDirPath ../.spm
+          CODE_SIGNING_ALLOWED=NO -IDEPackageSupportDisableManifestSandbox=YES
+          -IDEPackageSupportDisablePackagePluginSandbox=YES test
+      - name: Run script contracts
+        if: ${{ !cancelled() }}
+        run: python3 -m unittest discover -s scripts/tests -v
+      - name: Install model-free speech test dependencies
+        if: ${{ !cancelled() }}
+        run: |
+          python3 -m venv server/.venv
+          server/.venv/bin/python -m pip install \
+            fastapi==0.136.1 uvicorn==0.46.0 httpx==0.28.1 \
+            numpy==2.4.4 scipy==1.17.1 pytest==9.0.3 pytest-asyncio==1.3.0 tiktoken==0.12.0
+          # A vocabulary test reads the shipped tokenizer directly; no MLX runtime or models.
+          server/.venv/bin/python -m pip install --no-deps mlx-whisper==0.4.3
+      - name: Run speech tests without real models
+        if: ${{ !cancelled() }}
+        run: server/.venv/bin/python -m pytest server/tests --ignore=server/tests/test_quality_golden.py

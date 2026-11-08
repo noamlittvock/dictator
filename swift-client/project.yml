@@ -1,0 +1,85 @@
+name: Dictator
+options:
+  bundleIdPrefix: dev.noamlitt
+  deploymentTarget:
+    macOS: "14.0"
+  xcodeVersion: "16.0"
+
+packages:
+  Sparkle:
+    url: https://github.com/sparkle-project/Sparkle
+    exactVersion: 2.10.1
+  WhisperKit:
+    url: https://github.com/argmaxinc/WhisperKit
+    exactVersion: 1.1.0
+
+targets:
+  Dictator:
+    type: application
+    platform: macOS
+    dependencies:
+      - package: Sparkle
+      - package: WhisperKit
+        product: WhisperKit
+    sources:
+      - path: Dictator
+        excludes:
+          - Resources/SpeechSample
+      - path: Dictator/Resources/SpeechSample
+        type: folder
+        buildPhase: resources
+      - path: ../THIRD_PARTY_NOTICES.md
+        buildPhase: resources
+      - path: ../shared/tool-catalog.json
+        buildPhase: resources
+      - path: ../shared/model-catalog.json
+        buildPhase: resources
+      - path: ../shared/vocabulary-hints.json
+        buildPhase: resources
+      - path: ../shared/shortcut-catalog.json
+        buildPhase: resources
+      - path: ../shared/vocabulary-packs
+        type: folder
+        buildPhase: resources
+      - path: ../shared/connectors/dictator-capture
+        buildPhase: resources
+      - path: ../shared/connectors/opencode-plugin.js
+        buildPhase: resources
+    settings:
+      base:
+        INFOPLIST_FILE: Dictator/Info.plist
+        CODE_SIGN_ENTITLEMENTS: Dictator/Dictator.entitlements
+        CODE_SIGN_IDENTITY: "Dictator Local Code Signing"
+        CODE_SIGN_STYLE: Manual
+        PRODUCT_NAME: Dictator
+        DICTATOR_DISPLAY_NAME: Dictator
+        DICTATOR_SPARKLE_PUBLIC_KEY: ""
+        MARKETING_VERSION: "1.1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        SWIFT_VERSION: "5.9"
+        MACOSX_DEPLOYMENT_TARGET: "14.0"
+        ENABLE_HARDENED_RUNTIME: false
+      configs:
+        Debug:
+          PRODUCT_BUNDLE_IDENTIFIER: dev.noamlitt.dictator.development
+          DICTATOR_DISPLAY_NAME: Dictator Dev
+        Release:
+          PRODUCT_BUNDLE_IDENTIFIER: dev.noamlitt.dictator
+    entitlements:
+      path: Dictator/Dictator.entitlements
+      # xcodegen rewrites this file from these properties on every generate.
+      properties:
+        com.apple.security.device.audio-input: true
+        com.apple.security.automation.apple-events: true
+
+  DictatorTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - DictatorTests
+    dependencies:
+      - target: Dictator
+    settings:
+      base:
+        SWIFT_VERSION: "5.9"
+        GENERATE_INFOPLIST_FILE: YES

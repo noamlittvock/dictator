@@ -1,0 +1,249 @@
+{
+  "version": 1,
+  "browsers": [
+    { "bundle_id": "com.google.Chrome", "profile_root": "Google/Chrome" },
+    { "bundle_id": "com.google.Chrome.beta", "profile_root": "Google/Chrome Beta" },
+    { "bundle_id": "com.google.Chrome.canary", "profile_root": "Google/Chrome Canary" },
+    { "bundle_id": "com.brave.Browser", "profile_root": "BraveSoftware/Brave-Browser" },
+    { "bundle_id": "com.microsoft.edgemac", "profile_root": "Microsoft Edge" },
+    { "bundle_id": "com.vivaldi.Vivaldi", "profile_root": "Vivaldi" },
+    { "bundle_id": "org.chromium.Chromium", "profile_root": "Chromium" }
+  ],
+  "tools": [
+    {
+      "id": "claude-code", "name": "Claude Code", "vendor": "Anthropic", "category": "agent", "symbol": "terminal",
+      "signatures": { "process_names": ["claude"], "argv_patterns": ["@anthropic-ai/claude-code"], "config_dirs": [".claude"] },
+      "connector": {
+        "hook_format": "nested-hooks", "hook_config": ".claude/settings.json", "hook_event": "UserPromptSubmit",
+        "prompt_field": "prompt", "session_field": "session_id", "cwd_field": "cwd",
+        "transcript": { "format": "claude-history", "path": ".claude/history.jsonl" }
+      }
+    },
+    {
+      "id": "codex", "name": "Codex", "vendor": "OpenAI", "category": "agent",
+      "signatures": { "process_names": ["codex"], "argv_patterns": ["@openai/codex"], "config_dirs": [".codex"] },
+      "connector": {
+        "hook_format": "codex-hooks", "hook_config": ".codex/hooks.json", "hook_event": "UserPromptSubmit",
+        "prompt_field": "prompt", "session_field": "session_id", "cwd_field": "cwd",
+        "transcript": { "format": "codex-history", "path": ".codex/history.jsonl" },
+        "note": "Also covers the Codex agent inside the ChatGPT desktop app."
+      }
+    },
+    {
+      "id": "gemini-cli", "name": "Gemini CLI", "vendor": "Google", "category": "agent",
+      "signatures": { "process_names": ["gemini"], "argv_patterns": ["@google/gemini-cli"], "config_dirs": [".gemini/settings.json", ".gemini/tmp"] },
+      "connector": {
+        "hook_format": "gemini-hooks", "hook_config": ".gemini/settings.json", "hook_event": "BeforeAgent",
+        "prompt_field": "prompt", "session_field": "session_id", "cwd_field": "cwd"
+      }
+    },
+    {
+      "id": "antigravity-cli", "name": "Antigravity CLI", "vendor": "Google", "category": "agent",
+      "signatures": { "process_names": ["agy"], "config_dirs": [".gemini/antigravity-cli"] },
+      "connector": {
+        "hook_format": "agy-hooks", "hook_config": ".gemini/config/hooks.json", "hook_event": "PreInvocation",
+        "hook_reply": "{}",
+        "prompt_field": "@agy-transcript", "session_field": "conversationId",
+        "transcript": { "format": "agy-brain", "path": ".gemini/antigravity-cli/brain", "glob": "*/.system_generated/logs/transcript_full.jsonl" }
+      }
+    },
+    {
+      "id": "opencode", "name": "OpenCode", "vendor": "SST", "category": "agent",
+      "signatures": { "process_names": ["opencode", "opencode.exe"], "argv_patterns": ["opencode-ai"], "config_dirs": [".config/opencode"] },
+      "connector": {
+        "hook_format": "opencode-plugin", "hook_config": ".config/opencode/plugins/dictator-capture.js",
+        "prompt_field": "prompt", "session_field": "session_id", "cwd_field": "cwd"
+      }
+    },
+    {
+      "id": "copilot-cli", "name": "GitHub Copilot CLI", "vendor": "GitHub", "category": "agent",
+      "signatures": { "process_names": ["copilot"], "argv_patterns": ["@github/copilot"], "config_dirs": [".copilot"] },
+      "connector": {
+        "hook_format": "copilot-hooks", "hook_config": ".copilot/hooks/dictator-capture.json", "hook_event": "userPromptSubmitted",
+        "prompt_field": "prompt", "session_field": "sessionId", "cwd_field": "cwd"
+      }
+    },
+    {
+      "id": "cursor-agent", "name": "Cursor CLI", "vendor": "Anysphere", "category": "agent",
+      "signatures": { "process_names": ["cursor-agent"], "argv_patterns": ["cursor-agent"] }
+    },
+    {
+      "id": "aider", "name": "Aider", "vendor": "Aider", "category": "agent",
+      "signatures": { "process_names": ["aider"], "argv_patterns": ["bin/aider"] }
+    },
+    {
+      "id": "amp", "name": "Amp", "vendor": "Sourcegraph", "category": "agent",
+      "signatures": { "process_names": ["amp"], "argv_patterns": ["@sourcegraph/amp"] }
+    },
+    {
+      "id": "goose", "name": "Goose", "vendor": "Block", "category": "agent",
+      "signatures": { "process_names": ["goose"] }
+    },
+    {
+      "id": "qwen-code", "name": "Qwen Code", "vendor": "Alibaba", "category": "agent",
+      "signatures": { "process_names": ["qwen"], "argv_patterns": ["@qwen-code/qwen-code"] }
+    },
+    {
+      "id": "crush", "name": "Crush", "vendor": "Charm", "category": "agent",
+      "signatures": { "process_names": ["crush"] }
+    },
+    {
+      "id": "kimi-code", "name": "Kimi Code", "vendor": "Moonshot AI", "category": "agent",
+      "signatures": { "process_names": ["kimi"], "config_dirs": [".kimi-code"] }
+    },
+    {
+      "id": "kiro-cli", "name": "Kiro CLI", "vendor": "Amazon", "category": "agent",
+      "signatures": { "process_names": ["kiro-cli"] }
+    },
+    {
+      "id": "factory-droid", "name": "Droid", "vendor": "Factory", "category": "agent",
+      "signatures": { "process_names": ["droid"] }
+    },
+    {
+      "id": "hermes-agent", "name": "Hermes Agent", "vendor": "Nous Research", "category": "agent",
+      "signatures": { "process_names": ["hermes"], "bundle_ids": ["com.nousresearch.hermes"], "config_dirs": [".hermes"] }
+    },
+
+    {
+      "id": "chatgpt", "name": "ChatGPT", "vendor": "OpenAI", "category": "chat", "reads_composer": true,
+      "signatures": { "bundle_ids": ["com.openai.chat", "com.openai.codex"], "domains": ["chatgpt.com", "chat.openai.com"] }
+    },
+    {
+      "id": "claude", "name": "Claude", "vendor": "Anthropic", "category": "chat", "reads_composer": true,
+      "signatures": { "bundle_ids": ["com.anthropic.claudefordesktop"], "domains": ["claude.ai"] }
+    },
+    {
+      "id": "gemini", "name": "Gemini", "vendor": "Google", "category": "chat", "reads_composer": true,
+      "signatures": { "domains": ["gemini.google.com", "aistudio.google.com"] }
+    },
+    {
+      "id": "notebooklm", "name": "NotebookLM", "vendor": "Google", "category": "chat", "reads_composer": true,
+      "signatures": { "domains": ["notebooklm.google.com"] }
+    },
+    {
+      "id": "antigravity", "name": "Antigravity", "vendor": "Google", "category": "chat", "reads_composer": true,
+      "signatures": { "bundle_ids": ["com.google.antigravity"] }
+    },
+    {
+      "id": "perplexity", "name": "Perplexity", "vendor": "Perplexity", "category": "chat", "reads_composer": true,
+      "signatures": { "bundle_ids": ["ai.perplexity.mac"], "domains": ["perplexity.ai"] }
+    },
+    {
+      "id": "grok", "name": "Grok", "vendor": "xAI", "category": "chat", "reads_composer": true,
+      "signatures": { "domains": ["grok.com"] }
+    },
+    {
+      "id": "deepseek", "name": "DeepSeek", "vendor": "DeepSeek", "category": "chat", "reads_composer": true,
+      "signatures": { "domains": ["chat.deepseek.com"] }
+    },
+    {
+      "id": "mistral", "name": "Le Chat (Mistral)", "vendor": "Mistral AI", "category": "chat", "reads_composer": true,
+      "signatures": { "domains": ["chat.mistral.ai"] }
+    },
+    {
+      "id": "microsoft-copilot", "name": "Microsoft Copilot", "vendor": "Microsoft", "category": "chat", "reads_composer": true,
+      "signatures": { "domains": ["copilot.microsoft.com"] }
+    },
+    {
+      "id": "meta-ai", "name": "Meta AI", "vendor": "Meta", "category": "chat", "reads_composer": true,
+      "signatures": { "domains": ["meta.ai"] }
+    },
+    {
+      "id": "poe", "name": "Poe", "vendor": "Quora", "category": "chat", "reads_composer": true,
+      "signatures": { "domains": ["poe.com"] }
+    },
+    {
+      "id": "kimi", "name": "Kimi", "vendor": "Moonshot AI", "category": "chat", "reads_composer": true,
+      "signatures": { "domains": ["kimi.com", "kimi.moonshot.cn"] }
+    },
+    {
+      "id": "qwen-chat", "name": "Qwen Chat", "vendor": "Alibaba", "category": "chat", "reads_composer": true,
+      "signatures": { "domains": ["chat.qwen.ai"] }
+    },
+    {
+      "id": "v0", "name": "v0", "vendor": "Vercel", "category": "chat", "reads_composer": true,
+      "signatures": { "domains": ["v0.dev", "v0.app"] }
+    },
+    {
+      "id": "lovable", "name": "Lovable", "vendor": "Lovable", "category": "chat", "reads_composer": true,
+      "signatures": { "domains": ["lovable.dev"] }
+    },
+    {
+      "id": "bolt", "name": "Bolt", "vendor": "StackBlitz", "category": "chat", "reads_composer": true,
+      "signatures": { "domains": ["bolt.new"] }
+    },
+
+    {
+      "id": "cursor", "name": "Cursor", "vendor": "Anysphere", "category": "editor", "reads_composer": true,
+      "signatures": { "bundle_ids": ["com.todesktop.230313mzl4w4u92"], "config_dirs": [".cursor"] },
+      "connector": {
+        "hook_format": "cursor-hooks", "hook_config": ".cursor/hooks.json", "hook_event": "beforeSubmitPrompt",
+        "hook_reply": "{\"continue\":true}",
+        "prompt_field": "prompt", "session_field": "conversation_id"
+      }
+    },
+    {
+      "id": "windsurf", "name": "Windsurf", "vendor": "Cognition", "category": "editor", "reads_composer": true,
+      "signatures": { "bundle_ids": ["com.exafunction.windsurf"] }
+    },
+    {
+      "id": "antigravity-ide", "name": "Antigravity IDE", "vendor": "Google", "category": "editor", "reads_composer": true,
+      "signatures": { "bundle_ids": ["com.google.antigravity-ide"] }
+    },
+    {
+      "id": "vscode-chat", "name": "VS Code chat", "vendor": "Microsoft", "category": "editor", "reads_composer": true,
+      "signatures": { "bundle_ids": ["com.microsoft.VSCode", "com.microsoft.VSCodeInsiders", "com.vscodium"] }
+    },
+    {
+      "id": "zed-agent", "name": "Zed agent", "vendor": "Zed Industries", "category": "editor", "reads_composer": true,
+      "signatures": { "bundle_ids": ["dev.zed.Zed", "dev.zed.Zed-Preview"] }
+    },
+    {
+      "id": "jetbrains-ai", "name": "JetBrains AI", "vendor": "JetBrains", "category": "editor", "reads_composer": true,
+      "signatures": { "bundle_ids": ["com.jetbrains.*", "com.google.android.studio"] }
+    },
+    {
+      "id": "xcode-assistant", "name": "Xcode assistant", "vendor": "Apple", "category": "editor", "reads_composer": true,
+      "signatures": { "bundle_ids": ["com.apple.dt.Xcode"] }
+    }
+  ],
+  "host_apps": [
+    { "id": "terminal", "name": "Terminal", "kind": "terminal", "bundle_ids": ["com.apple.Terminal"], "runs_scripts": true },
+    { "id": "iterm", "name": "iTerm", "kind": "terminal", "bundle_ids": ["com.googlecode.iterm2"], "runs_scripts": true },
+    { "id": "ghostty", "name": "Ghostty", "kind": "terminal", "bundle_ids": ["com.mitchellh.ghostty"] },
+    { "id": "warp", "name": "Warp", "kind": "terminal", "bundle_ids": ["dev.warp.Warp-Stable", "dev.warp.Warp-Preview", "dev.warp.Warp"] },
+    { "id": "kitty", "name": "kitty", "kind": "terminal", "bundle_ids": ["net.kovidgoyal.kitty"] },
+    { "id": "wezterm", "name": "WezTerm", "kind": "terminal", "bundle_ids": ["com.github.wez.wezterm"] },
+    { "id": "alacritty", "name": "Alacritty", "kind": "terminal", "bundle_ids": ["org.alacritty", "io.alacritty"] },
+    { "id": "hyper", "name": "Hyper", "kind": "terminal", "bundle_ids": ["co.zeit.hyper"] },
+    { "id": "tabby", "name": "Tabby", "kind": "terminal", "bundle_ids": ["org.tabby"] },
+    { "id": "rio", "name": "Rio", "kind": "terminal", "bundle_ids": ["com.raphaelamorim.rio"] },
+    { "id": "wave", "name": "Wave", "kind": "terminal", "bundle_ids": ["dev.commandline.waveterm"] },
+    { "id": "termius", "name": "Termius", "kind": "terminal", "bundle_ids": ["com.termius-dmg.mac", "com.termius.mac"] },
+    { "id": "herdr", "name": "Herdr", "kind": "terminal", "bundle_ids": ["dev.herdr.app"] },
+
+    { "id": "vscode", "name": "VS Code", "kind": "editor", "bundle_ids": ["com.microsoft.VSCode", "com.microsoft.VSCodeInsiders", "com.vscodium"] },
+    { "id": "cursor", "name": "Cursor", "kind": "editor", "bundle_ids": ["com.todesktop.230313mzl4w4u92"] },
+    { "id": "windsurf", "name": "Windsurf", "kind": "editor", "bundle_ids": ["com.exafunction.windsurf"] },
+    { "id": "antigravity-ide", "name": "Antigravity IDE", "kind": "editor", "bundle_ids": ["com.google.antigravity-ide"] },
+    { "id": "zed", "name": "Zed", "kind": "editor", "bundle_ids": ["dev.zed.Zed", "dev.zed.Zed-Preview"] },
+    { "id": "jetbrains", "name": "JetBrains IDE", "kind": "editor", "bundle_ids": ["com.jetbrains.*", "com.google.android.studio"] },
+    { "id": "xcode", "name": "Xcode", "kind": "editor", "bundle_ids": ["com.apple.dt.Xcode"] },
+    { "id": "sublime", "name": "Sublime Text", "kind": "editor", "bundle_ids": ["com.sublimetext.4", "com.sublimetext.3"] },
+    { "id": "t3code", "name": "T3 Code", "kind": "editor", "bundle_ids": ["com.t3tools.t3code"] },
+
+    { "id": "chrome", "name": "Chrome", "kind": "browser", "url_script": "chromium", "bundle_ids": ["com.google.Chrome", "com.google.Chrome.canary", "com.google.Chrome.beta", "com.google.Chrome.dev"] },
+    { "id": "chromium", "name": "Chromium", "kind": "browser", "url_script": "chromium", "bundle_ids": ["org.chromium.Chromium"] },
+    { "id": "edge", "name": "Edge", "kind": "browser", "url_script": "chromium", "bundle_ids": ["com.microsoft.edgemac", "com.microsoft.edgemac.Beta", "com.microsoft.edgemac.Dev"] },
+    { "id": "brave", "name": "Brave", "kind": "browser", "url_script": "chromium", "bundle_ids": ["com.brave.Browser", "com.brave.Browser.beta"] },
+    { "id": "arc", "name": "Arc", "kind": "browser", "url_script": "chromium", "bundle_ids": ["company.thebrowser.Browser"] },
+    { "id": "dia", "name": "Dia", "kind": "browser", "url_script": "chromium", "bundle_ids": ["company.thebrowser.dia"] },
+    { "id": "comet", "name": "Comet", "kind": "browser", "url_script": "chromium", "bundle_ids": ["ai.perplexity.comet"] },
+    { "id": "vivaldi", "name": "Vivaldi", "kind": "browser", "url_script": "chromium", "bundle_ids": ["com.vivaldi.Vivaldi"] },
+    { "id": "opera", "name": "Opera", "kind": "browser", "url_script": "chromium", "bundle_ids": ["com.operasoftware.Opera"] },
+    { "id": "safari", "name": "Safari", "kind": "browser", "url_script": "safari", "bundle_ids": ["com.apple.Safari", "com.apple.SafariTechnologyPreview"] },
+    { "id": "orion", "name": "Orion", "kind": "browser", "url_script": "safari", "bundle_ids": ["com.kagi.kagimacOS"] },
+    { "id": "firefox", "name": "Firefox", "kind": "browser", "bundle_ids": ["org.mozilla.firefox", "org.mozilla.firefoxdeveloperedition", "org.mozilla.nightly"] },
+    { "id": "zen", "name": "Zen", "kind": "browser", "bundle_ids": ["app.zen-browser.zen"] }
+  ]
+}

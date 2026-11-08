@@ -1,0 +1,10 @@
+{
+  "id": "science",
+  "name": "Science",
+  "summary": "Laboratory methods, scientific names and abbreviations.",
+  "language": "en",
+  "apps": [
+    "org.rstudio.RStudio",
+    "com.wolfram.Mathematica"
+  ]
+}

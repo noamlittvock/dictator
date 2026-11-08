@@ -1,0 +1,11 @@
+{
+  "budget": 200,
+  "frames": {
+    "en": "Hello. Today we talked about {terms}, and more. Thanks.",
+    "he": "שלום. היום דיברנו על {terms}, ועוד. תודה.",
+    "es": "Hola. Hoy hablamos de {terms}, y más. Gracias.",
+    "fr": "Bonjour. Aujourd’hui, nous avons parlé de {terms}, et plus encore. Merci.",
+    "de": "Hallo. Heute haben wir über {terms} und mehr gesprochen. Danke.",
+    "fallback": "{terms}."
+  }
+}

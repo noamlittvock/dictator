@@ -1,0 +1,10 @@
+{
+  "version": "synthetic-english-v1",
+  "source": "macOS say, installed Samantha voice, 155 words per minute",
+  "format": "mono 16000 Hz little-endian float32 PCM",
+  "personal_material": false,
+  "references": {
+    "folders": "Please bring three blue folders."
+  },
+  "limits": "Synthetic voice only. References are authored prompts; no natural-speech accuracy claim."
+}

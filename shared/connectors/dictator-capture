@@ -1,0 +1,106 @@
+#!/bin/sh
+# dictator-capture — hands the prompts you submit to AI tools to Dictator.
+#
+# Installed by Dictator (Settings → Prompts) and registered as a tool's
+# prompt-submit hook. It only writes one small file per prompt into
+# ~/.dictator/spool; Dictator collects them (directly on a Mac, over your own
+# SSH connection on a server) and deletes them. Deleting this file — or
+# removing the hook from the tool's config — stops capture; the tools keep
+# working either way.
+#
+#   dictator-capture hook <tool> [reply]  read the tool's hook JSON on stdin
+#   dictator-capture drain                print spooled records, "<id> <json>" per line
+#   dictator-capture ack <id>...          delete records Dictator has stored
+#   dictator-capture version
+#
+# A hook must never slow down or block the tool: every path prints nothing
+# (or the one reply the tool requires) and exits 0.
+
+DICTATOR_CAPTURE_VERSION=1
+umask 077
+home_dir="${DICTATOR_HOME:-$HOME/.dictator}"
+spool="$home_dir/spool"
+
+clean() { printf '%s' "$1" | tr -cd 'A-Za-z0-9._-' | cut -c1-64; }
+
+case "${1:-}" in
+hook)
+  tool=$(clean "${2:-unknown}")
+  reply="${3:-}"
+  if [ -t 0 ]; then body=""; else body=$(head -c 32000000 2>/dev/null | tr '\r\n' '  '); fi
+  [ -n "$body" ] || body=null
+  extra=""
+  if [ "$tool" = "antigravity-cli" ]; then
+    # Antigravity's hook payload has no prompt text: take the newest
+    # USER_INPUT step from the conversation transcript it points at.
+    tp=$(printf '%s' "$body" | sed -n 's/.*"transcriptPath"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p')
+    if [ -n "$tp" ]; then
+      full="${tp%/*}/transcript_full.jsonl"
+      [ -f "$full" ] || full="$tp"
+      last=$(grep -E '"type"[[:space:]]*:[[:space:]]*"USER_INPUT"' "$full" 2>/dev/null | tail -n 1 | tr '\r\n' '  ')
+      [ -n "$last" ] && extra=",\"last_user_input\":$last"
+    fi
+  fi
+  # Was a person at a terminal behind this? Hooks run detached, so ask the
+  # tool's own process (the first ancestor that isn't the shell running this
+  # hook). Scripted and orchestrated runs have no terminal; Dictator keeps
+  # those out of your prompt history.
+  tty=unknown
+  if command -v ps >/dev/null 2>&1; then
+    tty=none; p=$(ps -o ppid= -p $$ 2>/dev/null | tr -d ' '); i=0
+    while [ "$i" -lt 4 ] && [ -n "$p" ] && [ "$p" -gt 1 ] 2>/dev/null; do
+      comm=$(ps -o comm= -p "$p" 2>/dev/null | sed 's|.*/||; s|^-||')
+      case "$comm" in
+        sh|bash|dash|zsh|fish|ksh|env|timeout) p=$(ps -o ppid= -p "$p" 2>/dev/null | tr -d ' '); i=$((i + 1)); continue ;;
+      esac
+      t=$(ps -o tty= -p "$p" 2>/dev/null | tr -d ' ')
+      case "$t" in ''|'?'|'??') ;; *) tty=$(clean "$t") ;; esac
+      break
+    done
+  fi
+  if mkdir -p "$spool" 2>/dev/null; then
+    now=$(date +%s)
+    rnd=$(od -An -N4 -tu4 /dev/urandom 2>/dev/null | tr -cd '0-9')
+    id="$now-$$-${rnd:-0}"
+    machine=$(clean "$(hostname 2>/dev/null)")
+    tmp="$spool/.$id.tmp"
+    if printf '{"v":1,"tool":"%s","machine":"%s","ts":%s,"tty":"%s","payload":%s%s}\n' \
+        "$tool" "$machine" "$now" "$tty" "$body" "$extra" 2>/dev/null > "$tmp"; then
+      mv -f "$tmp" "$spool/$id.json" 2>/dev/null
+    else
+      rm -f "$tmp" 2>/dev/null
+    fi
+    # Records nobody collected within 30 days are dropped.
+    case "$rnd" in *0) find "$spool" -name '*.json' -mtime +30 -exec rm -f {} + 2>/dev/null ;; esac
+  fi
+  [ -n "$reply" ] && printf '%s\n' "$reply"
+  exit 0
+  ;;
+drain)
+  [ -d "$spool" ] || exit 0
+  for f in "$spool"/*.json; do
+    [ -f "$f" ] || continue
+    name=${f##*/}
+    printf '%s ' "${name%.json}"
+    tr -d '\n' < "$f"
+    printf '\n'
+  done
+  exit 0
+  ;;
+ack)
+  shift
+  for id in "$@"; do
+    case "$id" in ''|*[!A-Za-z0-9-]*) continue ;; esac
+    rm -f "$spool/$id.json"
+  done
+  exit 0
+  ;;
+version)
+  echo "$DICTATOR_CAPTURE_VERSION"
+  exit 0
+  ;;
+*)
+  echo "usage: dictator-capture hook <tool> [reply] | drain | ack <id>... | version" >&2
+  exit 0
+  ;;
+esac

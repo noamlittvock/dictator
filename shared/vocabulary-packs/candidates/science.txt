@@ -1,0 +1,153 @@
+CRISPR
+Cas9
+Cas12a
+Cas13
+sgRNA
+siRNA
+miRNA
+mRNA
+cDNA
+qPCR
+RT-PCR
+ddPCR
+ELISA
+FACS
+ChIP-seq
+RNA-seq
+ATAC-seq
+GWAS
+SNP
+HLA
+MHC
+NMR
+FTIR
+XRD
+XPS
+SEM
+TEM
+AFM
+HPLC
+UHPLC
+LC-MS
+GC-MS
+MALDI-TOF
+ICP-MS
+SDS-PAGE
+EDTA
+HEPES
+DMSO
+DTT
+TCEP
+PBS
+Tris-HCl
+streptavidin
+biotinylation
+immunoprecipitation
+immunohistochemistry
+immunofluorescence
+electrophoresis
+chromatography
+spectrophotometry
+spectrofluorometry
+stoichiometry
+chirality
+enantiomer
+diastereomer
+racemization
+tautomerization
+nucleophilic
+electrophilic
+organometallic
+Grignard reagent
+Suzuki coupling
+Heck reaction
+Diels-Alder
+Friedel-Crafts
+Michaelis-Menten
+Lineweaver-Burk
+Henderson-Hasselbalch
+Arrhenius
+Eyring
+Gibbs free energy
+Helmholtz free energy
+Boltzmann
+Planck
+Schrödinger
+Heisenberg
+Feynman
+Lagrangian
+Hamiltonian
+Euler-Lagrange
+Navier-Stokes
+Reynolds number
+Prandtl number
+Nusselt number
+Péclet number
+Rayleigh number
+Knudsen number
+Debye length
+Bose-Einstein
+Fermi-Dirac
+Maxwell-Boltzmann
+Pauli exclusion
+Zeeman effect
+Stark effect
+Raman scattering
+Rayleigh scattering
+Brillouin scattering
+Cherenkov radiation
+Bremsstrahlung
+synchrotron
+cyclotron
+tokamak
+stellarator
+magnetohydrodynamics
+superconductivity
+quasiparticle
+quasicrystal
+skyrmion
+magnon
+phonon
+plasmon
+exciton
+polariton
+anyons
+fermions
+bosons
+leptons
+gluons
+neutrinos
+muons
+pions
+kaons
+hadronization
+baryogenesis
+nucleosynthesis
+spectral redshift
+Lyman-alpha
+Balmer series
+Schwarzschild radius
+Friedmann equations
+Hubble parameter
+de Sitter
+anti-de Sitter
+Calabi-Yau
+Riemannian
+Hilbert space
+Banach space
+Hausdorff
+Lebesgue
+Kolmogorov
+Bayesian
+Poisson
+Bernoulli
+Mann-Whitney
+Kruskal-Wallis
+Shapiro-Wilk
+Bonferroni
+Benjamini-Hochberg
+Tukey
+Cohen's d
+Hedges' g
+Welch's t-test
+Wilcoxon

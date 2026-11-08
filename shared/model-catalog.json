@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "cleanup": [
+    {
+      "model": "gemma3:4b",
+      "name": "Gemma 3 · 4B",
+      "summary": "Mid-sized. Needs at least 16 GB memory.",
+      "minMemoryGB": 16,
+      "recommendedFromGB": 16
+    },
+    {
+      "model": "gemma4:e2b-it-qat",
+      "name": "Gemma 4 · E2B",
+      "summary": "Small. The speech server’s default clean-up model.",
+      "minMemoryGB": 8,
+      "recommendedFromGB": 8
+    },
+    {
+      "model": "qwen3:8b",
+      "name": "Qwen 3 · 8B",
+      "summary": "The largest here, so usually the slowest. Needs at least 24 GB memory.",
+      "minMemoryGB": 24
+    },
+    {
+      "model": "llama3.2:3b",
+      "name": "Llama 3.2 · 3B",
+      "summary": "Small. Needs at least 8 GB memory.",
+      "minMemoryGB": 8
+    },
+    {
+      "model": "gemma3:1b",
+      "name": "Gemma 3 · 1B",
+      "summary": "The smallest here, so usually the fastest. Needs at least 8 GB memory.",
+      "minMemoryGB": 8
+    }
+  ],
+  "speech": [
+    {
+      "model": "whisperkit:openai_whisper-large-v3-v20240930_turbo",
+      "name": "Whisper Large v3 Turbo",
+      "summary": "The largest here, and usually the most accurate. Needs at least 16 GB memory.",
+      "minMemoryGB": 16,
+      "recommendedFromGB": 16,
+      "aliases": [
+        "whisper-large-v3-turbo",
+        "mlx-community/whisper-large-v3-turbo"
+      ]
+    },
+    {
+      "model": "whisperkit:openai_whisper-large-v3-v20240930_turbo_632MB",
+      "name": "Whisper Large v3 Turbo · compact",
+      "summary": "A smaller version of Large v3 Turbo that takes less memory. Needs at least 8 GB memory.",
+      "minMemoryGB": 8,
+      "recommendedFromGB": 8
+    },
+    {
+      "model": "whisperkit:openai_whisper-small",
+      "name": "Whisper Small",
+      "summary": "The speech server’s default speech model.",
+      "minMemoryGB": 8,
+      "aliases": [
+        "mlx-community/whisper-small-mlx",
+        "whisper-small-mlx"
+      ]
+    },
+    {
+      "model": "whisperkit:openai_whisper-base",
+      "name": "Whisper Base",
+      "summary": "The smallest here, and usually the least accurate. Needs at least 4 GB memory.",
+      "minMemoryGB": 4
+    }
+  ]
+}

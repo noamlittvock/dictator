@@ -1,0 +1,150 @@
+res judicata
+habeas corpus
+mens rea
+actus reus
+prima facie
+stare decisis
+obiter dictum
+ratio decidendi
+de novo
+pro bono
+amicus curiae
+certiorari
+mandamus
+quo warranto
+ultra vires
+intra vires
+sua sponte
+ex parte
+inter partes
+in camera
+in limine
+in personam
+in rem
+quasi in rem
+forum non conveniens
+lex loci
+lex fori
+lex situs
+lex specialis
+lex posterior
+jus cogens
+jus gentium
+jus soli
+jus sanguinis
+pacta sunt servanda
+rebus sic stantibus
+contra proferentem
+ejusdem generis
+expressio unius est exclusio alterius
+noscitur a sociis
+ut res magis valeat quam pereat
+audi alteram partem
+nemo judex in causa sua
+volenti non fit injuria
+res ipsa loquitur
+novus actus interveniens
+damnum absque injuria
+injuria sine damno
+uberrimae fidei
+caveat emptor
+caveat venditor
+quantum meruit
+quantum valebat
+promissory estoppel
+equitable estoppel
+collateral estoppel
+laches
+subrogation
+indemnification
+interpleader
+impleader
+joinder
+misjoinder
+nonjoinder
+remittitur
+additur
+remand
+demurrer
+affidavit
+deponent
+deposition
+interrogatories
+subpoena duces tecum
+subpoena ad testificandum
+voir dire
+venire
+peremptory challenge
+recusal
+allocution
+arraignment
+recognizance
+nolo contendere
+double jeopardy
+autrefois acquit
+autrefois convict
+malfeasance
+misfeasance
+nonfeasance
+fiduciary
+usufruct
+easement appurtenant
+easement in gross
+tenancy by the entirety
+tenancy in common
+fee simple
+fee tail
+reversionary interest
+executory interest
+rule against perpetuities
+cy pres
+per stirpes
+per capita
+testator
+testatrix
+codicil
+intestacy
+ademption
+abatement
+advancement
+escheat
+bona vacantia
+bona fide
+mala fide
+bona fide purchaser
+lis pendens
+pendente lite
+nunc pro tunc
+functus officio
+in pari delicto
+non obstante veredicto
+judgment notwithstanding the verdict
+sine qua non
+sine die
+sui generis
+sui juris
+non compos mentis
+guardian ad litem
+in loco parentis
+parens patriae
+amicus brief
+Daubert standard
+Brady disclosure
+Miranda warning
+Giglio material
+Batson challenge
+Erie doctrine
+Chevron deference
+summary adjudication
+declaratory judgment
+specific performance
+injunctive relief
+tortious interference
+unconscionability
+severability
+arbitrability
+nondelegable duty
+vicarious liability
+proximate causation
+contributory negligence
+comparative negligence

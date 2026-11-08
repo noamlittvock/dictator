@@ -1,0 +1,157 @@
+Figma
+FigJam
+Sketch
+Framer
+InVision
+Zeplin
+Axure
+Balsamiq
+Penpot
+ProtoPie
+Principle
+Origami Studio
+Adobe XD
+Photoshop
+Illustrator
+InDesign
+Lightroom
+After Effects
+Premiere Pro
+DaVinci Resolve
+Final Cut Pro
+Cinema 4D
+Blender
+Houdini
+ZBrush
+Maya
+3ds Max
+Substance Painter
+Substance Designer
+Marmoset Toolbag
+KeyShot
+Redshift
+OctaneRender
+V-Ray
+Arnold
+RenderMan
+Unreal Engine
+Unity
+Nuke
+Fusion
+Mocha Pro
+Silhouette
+Boris FX
+Sapphire
+Continuum
+Trapcode
+Particular
+Plexus
+Element 3D
+Video Copilot
+Motion Bro
+Lottie
+Bodymovin
+Rive
+Spline
+Vectary
+Webflow
+Readymag
+Tilda
+Affinity Designer
+Affinity Photo
+Affinity Publisher
+Pixelmator
+Procreate
+Krita
+Inkscape
+GIMP
+Photopea
+Aseprite
+Clip Studio Paint
+CorelDRAW
+Painter
+Wacom
+Huion
+XP-Pen
+Cintiq
+Intuos
+TourBox
+Loupedeck
+Elgato
+Stream Deck
+Blackmagic
+ATEM
+DeckLink
+UltraStudio
+Teranex
+Fairlight
+Speed Editor
+ARRI
+Alexa Mini
+Amira
+Panavision
+Cooke
+Zeiss
+Angenieux
+Fujinon
+Laowa
+Anamorphic
+S-Log
+C-Log
+V-Log
+LogC
+Rec. 709
+Rec. 2020
+DCI-P3
+ACES
+OCIO
+LUT
+HDR10
+HLG
+ProRes
+DNxHD
+DNxHR
+H.264
+H.265
+HEVC
+AV1
+XAVC
+BRAW
+CinemaDNG
+EXR
+OpenEXR
+DPX
+TIFF
+SVG
+CMYK
+sRGB
+Pantone
+Bezier
+kerning
+ligature
+x-height
+cap height
+descender
+ascender
+serif
+sans serif
+grotesque
+neo-grotesque
+chiaroscuro
+gobo
+bokeh
+rotoscoping
+chroma key
+luma matte
+alpha matte
+premultiplication
+parallax
+dolly zoom
+matchmove
+photogrammetry
+retopology
+UV unwrapping
+subsurface scattering
+ambient occlusion
+anisotropy
+caustics

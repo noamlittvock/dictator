@@ -1,0 +1,13 @@
+{
+  "id": "software",
+  "name": "Software",
+  "summary": "Programming tools, frameworks and technical abbreviations.",
+  "language": "en",
+  "apps": [
+    "com.apple.dt.Xcode",
+    "com.microsoft.VSCode",
+    "com.jetbrains.intellij",
+    "com.jetbrains.pycharm",
+    "com.todesktop.230313mzl4w4u92"
+  ]
+}

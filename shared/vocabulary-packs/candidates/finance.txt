@@ -1,0 +1,158 @@
+EBITDA
+EBIT
+GAAP
+IFRS
+FASB
+IASB
+ASC 606
+SOFR
+SONIA
+EURIBOR
+LIBOR
+OIS
+ISDA
+CSA
+CDS
+CDO
+CLO
+CMBS
+RMBS
+MBS
+ABS
+REIT
+ETF
+ETN
+UCITS
+SICAV
+NAV
+AUM
+IRR
+NPV
+WACC
+CAPM
+DCF
+ROIC
+ROCE
+ROE
+ROA
+EPS
+P/E
+PEG ratio
+EV/EBITDA
+FCFF
+FCFE
+NOPAT
+DPO
+DSO
+DIO
+CAC
+LTV
+ARR
+MRR
+NRR
+GRR
+NIM
+CET1
+RWA
+LCR
+NSFR
+VaR
+CVaR
+DV01
+PV01
+CS01
+Black-Scholes
+Black-Litterman
+Markowitz
+Modigliani-Miller
+Sharpe ratio
+Sortino ratio
+Treynor ratio
+Jensen's alpha
+Treynor-Black
+Fama-French
+Carhart
+Heston model
+Vasicek model
+Hull-White
+Ornstein-Uhlenbeck
+GARCH
+ARCH
+cointegration
+heteroskedasticity
+autocorrelation
+multicollinearity
+convexity
+contango
+backwardation
+swaptions
+straddles
+strangles
+collars
+butterfly spread
+condor spread
+calendar spread
+covered call
+cash-secured put
+delta hedging
+gamma scalping
+vega exposure
+theta decay
+rho sensitivity
+vanna
+volga
+moneyness
+securitization
+hypothecation
+rehypothecation
+defeasance
+amortization
+accretion
+debenture
+indenture
+pari passu
+pro rata
+pari passu clause
+seniority waterfall
+mezzanine financing
+covenant-lite
+payment-in-kind
+carried interest
+clawback
+hurdle rate
+high-water mark
+greenshoe
+bookbuilding
+overallotment
+recapitalization
+refinancing
+syndication
+factoring
+forfaiting
+usufruct
+bancassurance
+bail-in
+Basel III
+Solvency II
+MiFID II
+EMIR
+Dodd-Frank
+Sarbanes-Oxley
+Regulation D
+Regulation S
+Rule 144A
+KYC
+AML
+FATCA
+CRS
+SWIFT
+IBAN
+CUSIP
+ISIN
+SEDOL
+LEI
+Bloomberg
+FactSet
+Morningstar
+QuickBooks
+Xero

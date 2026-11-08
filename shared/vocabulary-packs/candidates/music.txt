@@ -1,0 +1,160 @@
+Ableton
+Cubase
+Nuendo
+Reaper
+Bitwig
+Pro Tools
+Logic Pro
+FL Studio
+Studio One
+GarageBand
+Maschine
+Kontakt
+Reaktor
+Serum
+Sylenth1
+Omnisphere
+Keyscape
+Trilian
+Massive X
+Pigments
+Diva
+Zebra
+Vital
+Phase Plant
+Falcon
+UVI
+Arturia
+Spitfire Audio
+Orchestral Tools
+Vienna Symphonic Library
+EastWest
+Toontrack
+Superior Drummer
+Addictive Drums
+BFD
+Spectrasonics
+Valhalla
+FabFilter
+Soundtoys
+iZotope
+Ozone
+Neutron
+RX
+Soothe2
+Gullfoss
+Trackspacer
+Melodyne
+Auto-Tune
+VocAlign
+Synchro Arts
+Celemony
+Eventide
+Lexicon
+Bricasti
+SSL
+Neve
+Pultec
+Fairchild
+LA-2A
+1176
+Distressor
+API 2500
+dbx 160
+Empirical Labs
+Manley
+Avalon
+Rupert Neve
+Focusrite
+Scarlett
+Clarett
+RME
+MOTU
+Apogee
+Antelope Audio
+Universal Audio
+UAD
+Apollo
+Audient
+Presonus
+Behringer
+Sennheiser
+Beyerdynamic
+Neumann
+Shure
+AKG
+Rode
+Lewitt
+Audio-Technica
+Audeze
+Genelec
+Focal
+Dynaudio
+ADAM Audio
+KRK
+Novation
+Akai
+Alesis
+Korg
+Roland
+Moog
+Sequential
+Oberheim
+Waldorf
+Kurzweil
+Nord
+Mellotron
+Clavinet
+Wurlitzer
+Rhodes
+Hammond
+Buchla
+Eurorack
+Doepfer
+Mutable Instruments
+Intellijel
+Make Noise
+Strymon
+Meris
+Elektron
+Digitakt
+Digitone
+Octatrack
+Syntakt
+arpeggiator
+portamento
+glissando
+acciaccatura
+appoggiatura
+mordent
+tremolo
+vibrato
+pizzicato
+spiccato
+sul ponticello
+col legno
+sforzando
+rinforzando
+fortepiano
+pianissimo
+fortissimo
+mezzo-forte
+crescendo
+diminuendo
+ritardando
+accelerando
+rubato
+ostinato
+polyrhythm
+hemiola
+syncopation
+anacrusis
+tritone
+Mixolydian
+Lydian
+Phrygian
+Locrian
+Dorian
+Aeolian
+enharmonic
+Neapolitan chord

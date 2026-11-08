@@ -1,0 +1,332 @@
+[
+  {
+    "text": "cut me some slack, I had a notion to whisper it",
+    "dictionary": [
+      {
+        "pattern": "Slack",
+        "replacement": ""
+      },
+      {
+        "pattern": "Notion",
+        "replacement": ""
+      },
+      {
+        "pattern": "Whisper",
+        "replacement": ""
+      }
+    ],
+    "expected": "cut me some slack, I had a notion to whisper it"
+  },
+  {
+    "text": "tail-scale and tail, scale",
+    "dictionary": [
+      {
+        "pattern": "tail scale",
+        "replacement": "Tailscale"
+      }
+    ],
+    "expected": "Tailscale and Tailscale"
+  },
+  {
+    "text": "Chat G.P.T. Chat g-p-t Chat GPT",
+    "dictionary": [
+      {
+        "pattern": "chat g p t",
+        "replacement": "ChatGPT"
+      }
+    ],
+    "expected": "ChatGPT ChatGPT ChatGPT"
+  },
+  {
+    "text": "cloud, code",
+    "dictionary": [
+      {
+        "pattern": "cloud code",
+        "replacement": "Claude Code"
+      }
+    ],
+    "expected": "Claude Code"
+  },
+  {
+    "text": "github's GitHub’s githubs GITHUBes",
+    "dictionary": [
+      {
+        "pattern": "GitHub",
+        "replacement": ""
+      }
+    ],
+    "expected": "GitHub's GitHub’s GitHubs GitHubes"
+  },
+  {
+    "text": "tools tooles tool's tool’s toolset atool tool_",
+    "dictionary": [
+      {
+        "pattern": "tool",
+        "replacement": "Device"
+      }
+    ],
+    "expected": "Devices Devicees Device's Device’s toolset atool tool_"
+  },
+  {
+    "text": "abs abes",
+    "dictionary": [
+      {
+        "pattern": "ab",
+        "replacement": "XY"
+      }
+    ],
+    "expected": "abs abes"
+  },
+  {
+    "text": "בשריון ושריון השריון לשריון משריון ששריון כשריון ובשריון",
+    "dictionary": [
+      {
+        "pattern": "שריון",
+        "replacement": "שיריון"
+      }
+    ],
+    "expected": "בשיריון ושיריון השיריון לשיריון משיריון ששיריון כשיריון ובשריון"
+  },
+  {
+    "text": "בשריון, שריון ושריון",
+    "dictionary": [
+      {
+        "pattern": "שריון",
+        "replacement": ""
+      }
+    ],
+    "expected": "בשריון, שריון ושריון"
+  },
+  {
+    "text": "בשריון",
+    "dictionary": [
+      {
+        "pattern": "סריון",
+        "replacement": "שריון"
+      }
+    ],
+    "expected": "בשריון"
+  },
+  {
+    "text": "בשריון",
+    "dictionary": [
+      {
+        "pattern": "שריון",
+        "replacement": "Armor"
+      }
+    ],
+    "expected": "בArmor"
+  },
+  {
+    "text": "git hub gpt GPT ChatGPT",
+    "dictionary": [
+      {
+        "pattern": "GPT",
+        "replacement": "Chat GPT"
+      }
+    ],
+    "expected": "git hub Chat GPT Chat GPT ChatGPT"
+  },
+  {
+    "text": "github and GITHUB",
+    "dictionary": [
+      {
+        "pattern": "GitHub",
+        "replacement": ""
+      }
+    ],
+    "expected": "GitHub and GitHub"
+  },
+  {
+    "text": "slack",
+    "dictionary": [
+      {
+        "pattern": "slack",
+        "replacement": "Slack"
+      }
+    ],
+    "expected": "Slack"
+  },
+  {
+    "text": "claude code and Cloud Code",
+    "dictionary": [
+      {
+        "pattern": "Claude Code",
+        "replacement": ""
+      }
+    ],
+    "expected": "Claude Code and Cloud Code"
+  },
+  {
+    "text": "GPT ChatGPT GPTs my_GPT",
+    "dictionary": [
+      {
+        "pattern": "GPT",
+        "replacement": "ChatGPT"
+      }
+    ],
+    "expected": "ChatGPT ChatGPT ChatGPTs my_GPT"
+  },
+  {
+    "text": "norḿ norm",
+    "dictionary": [
+      {
+        "pattern": "norm",
+        "replacement": "Noam"
+      }
+    ],
+    "expected": "norḿ Noam"
+  },
+  {
+    "text": "נעם, נעמי",
+    "dictionary": [
+      {
+        "pattern": "נעם",
+        "replacement": "נועם"
+      }
+    ],
+    "expected": "נועם, נעמי"
+  },
+  {
+    "text": "(c++), c++builder",
+    "dictionary": [
+      {
+        "pattern": "C++",
+        "replacement": "C Plus Plus"
+      }
+    ],
+    "expected": "(C Plus Plus), c++builder"
+  },
+  {
+    "text": "cost",
+    "dictionary": [
+      {
+        "pattern": "cost",
+        "replacement": "$5\\day"
+      }
+    ],
+    "expected": "$5\\day"
+  },
+  {
+    "text": "alpha beta",
+    "dictionary": [
+      {
+        "pattern": "alpha",
+        "replacement": "beta"
+      },
+      {
+        "pattern": "beta",
+        "replacement": "gamma"
+      }
+    ],
+    "expected": "beta gamma"
+  },
+  {
+    "text": "new york city and new york",
+    "dictionary": [
+      {
+        "pattern": "new york",
+        "replacement": "NY"
+      },
+      {
+        "pattern": "new york city",
+        "replacement": "NYC"
+      }
+    ],
+    "expected": "NYC and NY"
+  },
+  {
+    "text": "gpt",
+    "dictionary": [
+      {
+        "pattern": "GPT",
+        "replacement": ""
+      },
+      {
+        "pattern": "gpt",
+        "replacement": "ChatGPT"
+      }
+    ],
+    "expected": "ChatGPT"
+  },
+  {
+    "text": "בשריון-פלדה ושריון, פלדה",
+    "dictionary": [
+      {
+        "pattern": "שריון פלדה",
+        "replacement": ""
+      }
+    ],
+    "expected": "בשריון פלדה ושריון פלדה"
+  },
+  {
+    "text": "tail, scales tail-scales tail scale’s",
+    "dictionary": [
+      {
+        "pattern": "tail scale",
+        "replacement": "Tailscale"
+      }
+    ],
+    "expected": "Tailscales Tailscales Tailscale’s"
+  },
+  {
+    "text": "chat GPT and chat, g-p-t",
+    "dictionary": [
+      {
+        "pattern": "chat g p t",
+        "replacement": "ChatGPT"
+      }
+    ],
+    "expected": "ChatGPT and ChatGPT"
+  },
+  {
+    "text": "é.a éa é-a é a éa",
+    "dictionary": [
+      {
+        "pattern": "é a",
+        "replacement": "accented"
+      }
+    ],
+    "expected": "accented accented accented accented éa"
+  },
+  {
+    "text": "q́a q́.a q́ a",
+    "dictionary": [
+      {
+        "pattern": "q́ a",
+        "replacement": "joined"
+      }
+    ],
+    "expected": "q́a q́.a joined"
+  },
+  {
+    "text": "𐐨.𐐩 𐐨-𐐩 𐐨𐐩",
+    "dictionary": [
+      {
+        "pattern": "𐐨 𐐩",
+        "replacement": "letters"
+      }
+    ],
+    "expected": "letters letters letters"
+  },
+  {
+    "text": "😀 (a+b [x] (y)? .*🔧) aab [x] (y)? .*🔧",
+    "dictionary": [
+      {
+        "pattern": "a+b [x] (y)? .*🔧",
+        "replacement": "$1\\literal😀"
+      }
+    ],
+    "expected": "😀 ($1\\literal😀) aab [x] (y)? .*🔧"
+  },
+  {
+    "text": "g. - ,\tp-t g         pt",
+    "dictionary": [
+      {
+        "pattern": "g p t",
+        "replacement": "GPT"
+      }
+    ],
+    "expected": "GPT g         pt"
+  }
+]

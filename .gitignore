@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+*.egg-info/
+
+# Swift / Xcode
+swift-client/build/
+swift-client/build.noindex/
+*.profraw
+xcuserdata/
+swift-client/Dictator.xcodeproj/-Xcc/
+
+# Local
+.dd/
+.spm/
+*.log
+*.swp
+.DS_Store
+.claude/
+/tmp/

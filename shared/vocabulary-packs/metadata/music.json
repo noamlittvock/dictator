@@ -1,0 +1,14 @@
+{
+  "id": "music",
+  "name": "Music",
+  "summary": "Music production tools, instruments and theory.",
+  "language": "en",
+  "apps": [
+    "com.apple.logic10",
+    "com.ableton.live",
+    "com.apple.garageband10",
+    "com.avid.ProTools",
+    "com.cockos.reaper",
+    "com.bitwig.BitwigStudio"
+  ]
+}

@@ -1,0 +1,194 @@
+[
+  {
+    "note": "fillers and false starts go",
+    "transcript": "so um i think we should uh we should probably ship it today because the tests are passing and stuff",
+    "output": "I think we should ship it today because the tests are passing.",
+    "faithful": true
+  },
+  {
+    "note": "grammar changes words",
+    "transcript": "me and him goes to the store yesterday and buyed three apples",
+    "output": "He and I went to the store yesterday and bought three apples.",
+    "faithful": true
+  },
+  {
+    "note": "Hebrew may be reordered",
+    "transcript": "אני רוצה ללכת לחנות מחר בבוקר אמ כדי לקנות חלב",
+    "output": "מחר בבוקר אני רוצה ללכת לחנות כדי לקנות חלב.",
+    "faithful": true
+  },
+  {
+    "note": "a code switch stays",
+    "transcript": "Today אני working on a חדש project",
+    "output": "Today אני working on a חדש project.",
+    "faithful": true
+  },
+  {
+    "note": "a split Hebrew prefix may join its word",
+    "transcript": "אני חושב ש אה אנחנו צריכים אנחנו צריכים לדחות את הפגישה לשבוע הבא",
+    "output": "אני חושב שאנחנו צריכים לדחות את הפגישה לשבוע הבא.",
+    "faithful": true
+  },
+  {
+    "note": "numbers stay",
+    "transcript": "the budget is 4500 for 3 people",
+    "output": "The budget is 4500 for 3 people.",
+    "faithful": true
+  },
+  {
+    "note": "dictionary terms stay",
+    "transcript": "ask noam about kubernetes",
+    "output": "Ask Noam about Kubernetes.",
+    "dictionary": [
+      {
+        "pattern": "Kubernetes",
+        "replacement": ""
+      }
+    ],
+    "faithful": true
+  },
+  {
+    "note": "only fillers",
+    "transcript": "um uh",
+    "output": "",
+    "faithful": true
+  },
+  {
+    "note": "a reply is not a polish",
+    "transcript": "what animated imagery is common when spoofing dictatorships question mark",
+    "output": "When satirizing or spoofing dictatorships, common animated imagery includes exaggerated features, overly opulent settings, and grotesque caricatures of leaders.",
+    "faithful": false
+  },
+  {
+    "note": "a short reply",
+    "transcript": "hermes desktop app",
+    "output": "Hermes is a desktop application that lets you chat with an assistant and manage your workflows.",
+    "faithful": false
+  },
+  {
+    "note": "a code switch cannot be translated",
+    "transcript": "Today אני working on a חדש project",
+    "output": "Today I'm working on a new project.",
+    "faithful": false
+  },
+  {
+    "note": "a whole language cannot be translated",
+    "transcript": "תודה רבה",
+    "output": "Thank you.",
+    "faithful": false
+  },
+  {
+    "note": "a sentence cannot vanish",
+    "transcript": "The meeting starts at nine. Bring three blue folders.",
+    "output": "The meeting starts at nine.",
+    "faithful": false
+  },
+  {
+    "note": "a long sentence cannot hide a lost short one",
+    "transcript": "We will review the revised delivery schedule and update every owner before lunch. Bring the blue folders.",
+    "output": "We will review the revised delivery schedule and update every owner before lunch.",
+    "faithful": false
+  },
+  {
+    "note": "a summary is not a polish",
+    "transcript": "we need to call the vendor and confirm the delivery date and then update the project plan and tell the whole team on friday",
+    "output": "Confirm delivery with the vendor.",
+    "faithful": false
+  },
+  {
+    "note": "a number cannot change",
+    "transcript": "the budget is 4500 for 3 people",
+    "output": "The budget is 5400 for 3 people.",
+    "faithful": false
+  },
+  {
+    "note": "a dictionary term cannot be reworded",
+    "transcript": "ask noam about kubernetes",
+    "output": "Ask Noam about the cluster software.",
+    "dictionary": [
+      {
+        "pattern": "Kubernetes",
+        "replacement": ""
+      }
+    ],
+    "faithful": false
+  },
+  {
+    "note": "line breaks stay",
+    "transcript": "first point\nsecond point",
+    "output": "First point, second point.",
+    "faithful": false
+  },
+  {
+    "note": "words cannot disappear",
+    "transcript": "hello there",
+    "output": "",
+    "faithful": false
+  },
+  {
+    "note": "a line break stays a line break in CRLF",
+    "transcript": "first point\nsecond point",
+    "output": "First point.\r\nSecond point.",
+    "faithful": true
+  },
+  {
+    "note": "a fraction is a word that cannot disappear",
+    "transcript": "add \u00bd",
+    "output": "add",
+    "faithful": false
+  },
+  {
+    "note": "a joined emoji is no word to keep",
+    "transcript": "\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67",
+    "output": "",
+    "faithful": true
+  },
+  {
+    "note": "accents split words the same way on both sides",
+    "transcript": "the cafe\u0301 opens today",
+    "output": "The cafe\u0301 opens today.",
+    "faithful": true
+  },
+  {
+    "note": "a dropped negation reverses the meaning",
+    "transcript": "do not send the payment today",
+    "output": "Do send the payment today.",
+    "faithful": false
+  },
+  {
+    "note": "a negation may be spelled out",
+    "transcript": "we don't ship on fridays because of the weekend",
+    "output": "We do not ship on Fridays because of the weekend.",
+    "faithful": true
+  },
+  {
+    "note": "a curly apostrophe is the same word",
+    "transcript": "we don't ship on fridays",
+    "output": "We don\u2019t ship on Fridays.",
+    "faithful": true
+  },
+  {
+    "note": "a Hebrew negation cannot go",
+    "transcript": "\u05d0\u05e0\u05d9 \u05dc\u05d0 \u05de\u05d2\u05d9\u05e2 \u05dc\u05e4\u05d2\u05d9\u05e9\u05d4 \u05de\u05d7\u05e8",
+    "output": "\u05d0\u05e0\u05d9 \u05de\u05d2\u05d9\u05e2 \u05dc\u05e4\u05d2\u05d9\u05e9\u05d4 \u05de\u05d7\u05e8.",
+    "faithful": false
+  },
+  {
+    "note": "an amount cannot change",
+    "transcript": "please transfer 100 dollars to the savings account this afternoon",
+    "output": "Please transfer 900 dollars to the savings account this afternoon.",
+    "faithful": false
+  },
+  {
+    "note": "a short dictation cannot gain a command",
+    "transcript": "send it",
+    "output": "Send it to everyone.",
+    "faithful": false
+  },
+  {
+    "note": "a split Hebrew prefix may join a short dictation",
+    "transcript": "\u05e9 \u05d0\u05e0\u05d7\u05e0\u05d5",
+    "output": "\u05e9\u05d0\u05e0\u05d7\u05e0\u05d5",
+    "faithful": true
+  }
+]

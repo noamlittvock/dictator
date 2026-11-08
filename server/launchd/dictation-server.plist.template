@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  LaunchAgent template for the speech server.
+
+  plists cannot expand $HOME or any other shell variable, so fill in the
+  placeholders before installing: __REPO__ is this repository's absolute
+  path and __HOME__ is the home folder of the account that runs it.
+
+    sed -e "s#__REPO__#$PWD#g" -e "s#__HOME__#$HOME#g" \
+      server/launchd/dictation-server.plist.template \
+      > ~/Library/LaunchAgents/dev.noamlitt.dictation.server.plist
+    plutil -lint ~/Library/LaunchAgents/dev.noamlitt.dictation.server.plist
+    launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/dev.noamlitt.dictation.server.plist
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>dev.noamlitt.dictation.server</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>__REPO__/server/.venv/bin/python</string>
+        <string>-m</string>
+        <string>server.server</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>__REPO__</string>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+        <key>PYTHONUNBUFFERED</key>
+        <string>1</string>
+        <!-- A 16 GB Mac cannot keep a 9.5 GB clean-up model resident next to
+             Whisper; gemma4:e2b-it-qat (4.3 GB) is the default, and the server
+             uses a text-only copy that Ollama unloads after
+             DICTATION_IDLE_UNLOAD_S (default 300 s). -->
+        <key>DICTATION_POLISH_MODEL</key>
+        <string>gemma4:e2b-it-qat</string>
+    </dict>
+    <key>KeepAlive</key>
+    <true/>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>__HOME__/Library/Logs/dictation-server.out.log</string>
+    <key>StandardErrorPath</key>
+    <string>__HOME__/Library/Logs/dictation-server.err.log</string>
+</dict>
+</plist>

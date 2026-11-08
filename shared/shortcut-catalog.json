@@ -1,0 +1,90 @@
+{
+  "version": 5,
+  "allowed_link_schemes": ["http", "https", "mailto", "whatsapp", "sms"],
+  "groups": [
+    { "id": "message", "title": "Message someone" },
+    { "id": "search", "title": "Search the web" },
+    { "id": "ask", "title": "Ask an AI" },
+    { "id": "mac", "title": "On your Mac" }
+  ],
+  "lists": [
+    { "name": "People", "fields": ["phone", "email"] },
+    { "name": "Projects", "fields": ["folder"] },
+    { "name": "Your Shortcuts", "fields": ["identifier"] }
+  ],
+  "templates": [
+    {
+      "id": "email", "name": "Email", "card": {"title": "Email a person", "example": "Email Dana see you soon", "group": "message", "does": "Opens a new Gmail email to them, ready for you to check and send."},
+      "pattern": "Email {person:People} [subject {subject} body] {body}",
+      "cleanUpSlot": "body",
+      "steps": [{ "kind": "openLink", "link": "https://mail.google.com/mail/?view=cm&fs=1&to={person.email}&su={subject}&body={body}" }]
+    },
+    {
+      "id": "whatsapp", "name": "WhatsApp", "card": {"title": "WhatsApp a person", "example": "WhatsApp Dana I'll be late", "ask": "whatsapp", "group": "message", "does": "Opens your chat with them with the message typed in. You press Send.", "apps": ["net.whatsapp.WhatsApp"]},
+      "pattern": "WhatsApp {person:People} {message}",
+      "cleanUpSlot": "message",
+      "steps": [{ "kind": "openLink", "link": "whatsapp://send?phone={person.phone}&text={message}" }]
+    },
+    {
+      "id": "whatsapp-send", "name": "WhatsApp and send", "card": {"variantOf": "whatsapp", "does": "Sends the message to them after 3 seconds. Press Esc to stop it."},
+      "pattern": "WhatsApp and send {person:People} {message}",
+      "cleanUpSlot": "message",
+      "steps": [
+        { "kind": "openLink", "link": "whatsapp://send?phone={person.phone}&text={message}" },
+        { "kind": "waitForTextField", "bundleId": "net.whatsapp.WhatsApp", "seconds": 8 },
+        { "kind": "confirm", "text": "Sending to {person}: {message}", "seconds": 3 },
+        { "kind": "pressKey", "key": "return" }
+      ]
+    },
+    {
+      "id": "youtube", "name": "YouTube", "card": {"title": "Search YouTube", "example": "YouTube funny cats", "group": "search", "does": "Opens YouTube results in your browser."}, "pattern": "YouTube {query}",
+      "steps": [{ "kind": "openLink", "link": "https://www.youtube.com/results?search_query={query}" }]
+    },
+    {
+      "id": "google", "name": "Google", "card": {"title": "Search Google", "example": "Google best pizza near me", "group": "search", "does": "Opens Google results in your browser."}, "pattern": "Google {query}",
+      "steps": [{ "kind": "openLink", "link": "https://www.google.com/search?q={query}" }]
+    },
+    {
+      "id": "marketplace", "name": "Marketplace", "card": {"title": "Search Marketplace", "example": "Marketplace used bike", "group": "search", "does": "Opens Facebook Marketplace results in your browser."}, "pattern": "Marketplace {query}",
+      "steps": [{ "kind": "openLink", "link": "https://www.facebook.com/marketplace/search/?query={query}" }]
+    },
+    {
+      "id": "chatgpt", "name": "ChatGPT", "card": {"title": "Ask ChatGPT", "example": "ChatGPT explain black holes", "group": "ask", "does": "Opens ChatGPT in your browser and asks your question.", "apps": ["com.openai.chat"]}, "pattern": "ChatGPT {prompt}", "cleanUpSlot": "prompt",
+      "steps": [{ "kind": "openLink", "link": "https://chatgpt.com/?q={prompt}" }]
+    },
+    {
+      "id": "claude", "name": "Claude", "card": {"title": "Ask Claude", "example": "Claude plan my week", "group": "ask", "does": "Opens Claude in your browser and asks your question.", "apps": ["com.anthropic.claudefordesktop"]}, "pattern": "Claude {prompt}", "cleanUpSlot": "prompt",
+      "steps": [{ "kind": "openLink", "link": "https://claude.ai/new?q={prompt}" }]
+    },
+    {
+      "id": "claude-code", "name": "Claude Code", "card": {"title": "Claude Code project", "example": "Code Dictator fix the login bug", "ask": "projects", "group": "mac", "does": "Starts Claude Code in that project’s folder, in Terminal, with your request.", "site": "claude.ai"},
+      "pattern": "Code {project:Projects} {prompt}", "cleanUpSlot": "prompt",
+      "steps": [{ "kind": "runInTerminal", "folder": "{project.folder}", "command": "claude", "argument": "{prompt}" }]
+    },
+    {
+      "id": "run-shortcut", "name": "Run a Shortcut", "card": {"title": "Run a Shortcut", "example": "Shortcut lights off", "ask": "shortcuts", "group": "mac", "does": "Runs one of your Apple Shortcuts after 3 seconds. Press Esc to stop it."},
+      "pattern": "Shortcut {which:Your Shortcuts} {words}",
+      "steps": [
+        { "kind": "confirm", "text": "Running the Shortcut {which} {words}", "seconds": 3 },
+        { "kind": "runAppleShortcut", "shortcutName": "{which}", "shortcutId": "{which.identifier}", "inputMode": "json" }
+      ]
+    },
+    {
+      "id": "run-shortcut-now", "name": "Run a Shortcut (right away)", "card": {"variantOf": "run-shortcut", "does": "Runs one of your Apple Shortcuts right away."},
+      "pattern": "Shortcut now {which:Your Shortcuts} {words}",
+      "steps": [
+        { "kind": "runAppleShortcut", "shortcutName": "{which}", "shortcutId": "{which.identifier}", "inputMode": "json", "readOnly": true }
+      ]
+    },
+    {
+      "id": "open-app", "name": "Open an app", "card": {"title": "Open an app", "example": "Open Safari", "group": "mac", "does": "Opens the app you name on this Mac."},
+      "pattern": "Open {app}",
+      "steps": [{ "kind": "openApp", "text": "{app}" }]
+    },
+    {
+      "id": "open-workspace", "name": "Workspaces", "card": {"title": "Workspaces", "example": "Workspace writing", "group": "mac", "does": "Runs the saved window routine you name, including its other Macs."},
+      "pattern": "Workspace {workspace}",
+      "steps": [{ "kind": "runWorkspace", "text": "{workspace}" }]
+    }
+  ]
+}
