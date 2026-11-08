@@ -1,12 +1,143 @@
-<img src=".github/brand/hero.png" alt="Dictator. Voice to Power. The voice-first power tool for Mac. A Mac mini bearing the Dictator mark beside red rays and the floating tiles Right Option, Open Safari and Run tests." width="1200">
+<p align="center">
+  <img src=".github/brand/readme/hero.webp" alt="Dictator. Voice to power. An open-source, user-owned command layer for macOS. The Dictator cap sits behind a desk while code and app icons orbit it." width="100%">
+</p>
 
-# Dictator
+```sh
+curl -fsSL https://raw.githubusercontent.com/noamlittvock/dictator/main/install.sh | sh
+```
 
-**Dictator. Voice to Power.** The voice-first power tool for Mac.
+<p align="center"><a href="https://github.com/noamlittvock/dictator/releases/latest"><b>Download for Mac</b></a></p>
 
-Hold a key and speak. Dictator puts your words in the focused app, runs the command you named or starts a window routine. Commands can open an app or project, run a shell command or start a coding agent. Use a click or a keyboard shortcut when that is quicker. Speech is turned into text by AI models on your own Macs. Whisper and clean-up models download from their hosts (Hugging Face and Ollama), macOS downloads Apple speech assets, and website icons are fetched from the websites themselves.
+<p align="center">Free and open source · MIT · macOS 14+ · Apple silicon</p>
 
-[Features](#features) · [Your Macs](#your-macs) · [Your settings](#your-settings) · [Questions](#questions) · [Get started](#get-started) · [Where this is going](#where-this-is-going)
+<p align="center"><a href="#what-v1-ships-with">What V.1 ships with</a> · <a href="#your-machine-your-data">Your machine, your data</a> · <a href="#open-source">Open source</a> · <a href="#in-detail">In detail</a></p>
+
+<br>
+
+<img src=".github/brand/readme/computing.webp" alt="Computing is changing." width="100%">
+
+We are moving from seeing computers as tools we operate to seeing them as digital environments where we manage, delegate, start automated work, and take the reins when direct control is needed.
+
+Voice is central to this shift. It lets us do what comes naturally: say what’s on our minds and what we want done, instead of executing every step by hand.
+
+<img src=".github/brand/readme/challenge.webp" alt="The central challenge is translating human intent into computer action." width="100%">
+
+## What V.1 ships with
+
+Introducing Dictator: an open-source, user-owned command layer for macOS.
+
+V.1 ships with out of the box local AI dictation, launching applications and projects by voice, workspace management, and configurable commands.
+
+### 01 · Local AI dictation
+
+<kbd>Right ⌥</kbd> hold, speak, let go
+
+Clean text lands wherever your cursor is: Claude, Terminal, Gmail, Slack. Filler out, punctuation in. It learns your names from your corrections.
+
+> **You say:** ~~um so like~~ on small phones the keyboard ~~uh~~ hides the invite button, fix it<br>
+> **Claude gets:** On small phones the keyboard hides the Invite button. Fix it.
+
+### 02 · Apps and projects
+
+<kbd>Right ⌥</kbd> + <kbd>Right ⇧</kbd> say what you want
+
+Name an app and it opens. Name a project and Claude Code starts in its folder with your request.
+
+| You say | What happens |
+|---|---|
+| **Open** Xcode | Xcode opens. |
+| **Code** pantry add an invite alert | Claude Code starts in your Pantry folder with the job. |
+| **Claude** what should we build next | Claude opens with the question. |
+
+### 03 · Workspaces
+
+Say the name, or click it, or press its shortcut
+
+Every app, tab and window where it belongs, on one Mac or all of them. Preview the layout before anything moves. Undo puts it all back.
+
+> **Workspace** morning: the windows snap into place. **Workspace** writing: they swap.
+
+### 04 · Commands you configure
+
+Your phrase, your steps
+
+Chain steps once and give them a phrase. It is matched exactly against your own lists, with no model guessing what you meant. Anything that sends waits for you.
+
+> **You say:** **WhatsApp** Dana I’ll be late<br>
+> **The command:** `WhatsApp [person] [message]`, with Dana as the person and I’ll be late as the message
+>
+> 1. Find Dana in your People list
+> 2. Open the WhatsApp chat with the message typed
+> 3. Wait. You press Send.
+
+<br>
+
+<img src=".github/brand/readme/reins.webp" alt="Direct. Automate. Delegate. Keep the reins. Beside it, the Dictator cap conducts an orchestra of app icons as a workspace of windows falls into place." width="100%">
+
+These are first steps toward one interface for directing tasks, automating routines and delegating work without giving up direct control.
+
+*First steps, with no dates promised.* [Read the vision](docs/vision.md)
+
+<br>
+
+<a id="your-machine-your-data"></a>
+<img src=".github/brand/readme/local.webp" alt="Your machine. Your data." width="100%">
+
+Its engine runs entirely locally, keeping your data and prompts on your machine, allowing you to mine them for valuable insights on your usage patterns across vendors.
+
+```text
+DATASETS                     Saved · Mon 9:12
+Sent to   Claude Code, Codex
+Range     Last 30 days
+Prompts   1,746
+Run with  claude -p
+Task      Find the prompts I keep repeating. For each, draft a slash
+          command, a project rule or a Dictator command.
+```
+
+| Report | Prompt | Becomes |
+|---:|---|---|
+| 23× | run the tests and fix whatever fails | `/fix-tests`, slash command |
+| 14× | review the diff for bugs before I commit | `/review`, slash command |
+| 11× | no, use pnpm, not npm | `AGENTS.md`, project rule |
+| 9× | open pantry, start the dev server and open localhost | `Pantry up`, Dictator command |
+
+*The prompts and counts are illustrative.*
+
+**Runs on your Macs.** Whisper or Apple’s speech engine hears you. An Ollama model tidies up. No cloud service hears your voice.
+
+**Learn from your own prompts.** Datasets gathers your dictations and the prompts you type into the AI tools you connect, by vendor, project and date. Hand one to your own agent and ask what you keep repeating: the answers become slash commands, project rules and Dictator commands.
+
+**One Mac, or all of them.** Dictate on the laptop and let the Mac mini do the heavy lifting. Your Macs find each other over Tailscale.
+
+*Dictator prepares the data and never analyses it; the report comes from the agent you choose. What does go online: model downloads, update checks (you can turn them off), and whatever your commands open.*
+
+<br>
+
+<a id="open-source"></a>
+<img src=".github/brand/readme/oss.webp" alt="Open source. MIT licensed." width="100%">
+
+Dictator is open source to encourage a community dedicated to exploring and improving human–machine interaction in the emerging new age of hybrid computing with the ultimate goal of unlocking the full power of personalized, intent-driven computing, on the user’s own terms.
+
+**[Read the source](swift-client/)** · **[Open an issue](https://github.com/noamlittvock/dictator/issues/new/choose)** · MIT licensed
+
+<br>
+
+<img src=".github/brand/readme/end.webp" alt="Happy dictating. The Dictator mark: a microphone wearing an officer’s cap." width="100%">
+
+<p align="center"><b>Dictator V.1 is available now.</b></p>
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/noamlittvock/dictator/main/install.sh | sh
+```
+
+<p align="center"><a href="https://github.com/noamlittvock/dictator/releases/latest"><b>Download for Mac</b></a></p>
+
+<p align="center">macOS 14 or later · Apple silicon · Tailscale for more than one Mac</p>
+
+---
+
+# In detail
 
 ## Install
 
@@ -16,23 +147,9 @@ curl -fsSL https://raw.githubusercontent.com/noamlittvock/dictator/main/install.
 
 Or download `Dictator-1.1.0-macOS-arm64.zip` from the [latest release](https://github.com/noamlittvock/dictator/releases/latest), unzip it and drag Dictator to Applications.
 
-macOS 14 or later · Apple silicon · Tailscale for more than one Mac
-
 The installer checks your Mac, verifies the downloaded release’s signature and Apple’s approval, puts Dictator in Applications, offers Ollama for clean-up models and Tailscale for more than one Mac, and opens the app. Downloaded releases keep their Developer ID signature and download quarantine; `DICTATOR_ASSET` is for local builds and permits local signing. In a terminal it asks before each step; `sh install.sh --help` lists them. On first launch Dictator's welcome walks through the dictation key, the Microphone, Accessibility and Input Monitoring permissions, and the speech model to download. `uninstall.sh` removes it again.
 
-## Where this is going
-
-Dictator is working toward [piloting the computer](docs/vision.md): say what you want done, see what ran and take over when you need to.
-
-- **Command (available now):** dictation, Commands and Workspaces routines, running on your own Macs.
-- **Supervise (next):** a record of what ran, agents that report back, signals when something needs you, and a way back to the right place.
-- **Delegate (later):** requests in ordinary language, routed to the simplest reliable mechanism. Agents handle work that needs reasoning, inside permissions you set.
-
-These are stages of the direction, with no promised dates.
-
-## Features
-
-### Commands
+## Commands
 
 Choose what happens when you speak. Turn on “Open an app”, then say “Open Safari”; “Workspace writing” runs the saved routine named writing. Hold Right ⌥ Option and Right Shift, or the keys you chose, say the phrase and release. Dictator matches it exactly against your own lists, with no model choosing the action.
 
@@ -51,11 +168,11 @@ A command's actions can open a page or app, run a Workspaces routine, type, star
 - **Start from other apps.** A command can opt in to being started through a `dictator://run` link. Commands that act ask first.
 - **See what ran.** Home shows recent commands on this Mac: names and outcomes only, never your words.
 
-### Workspaces
+## Workspaces
 
 Create a window routine and run it by voice, with a click or a keyboard shortcut: the browser sits on the left and the editor on the right. With “Place apps”, assign each app to a Mac, a monitor on that Mac and a position on that monitor. Either Mac can start the routine; each opens and places its own apps. With “Open tabs”, a routine opens the pages you list in the browser you choose, on the Mac you choose, and in a named profile on Chrome-family browsers, so one routine can open your mail in one account and your documents in another. Turn on “Show only this routine’s windows” and a routine becomes a group: its windows come forward and other apps hide, on the same desktop, and running another group swaps them. Name your layouts and preview them before a window moves. Give a routine its own voice command right there, and run it with your chosen words even after its name changes. Undo uses the pre-run positions to move available windows back and reports any it cannot restore. It remains available until Dictator quits or a later run replaces it. Say “Workspace writing” in Commands mode to run the saved routine named writing. Its changes finish before the next command action begins. Choose whether a Place apps or Remember step opens closed apps. A missing monitor sends its windows to that Mac’s main screen; an unreachable Mac is named while the others finish. Undo leaves newly opened apps open. Remember how your windows are now, on this Mac or on all your Macs at once, and put them back later. Remember brings back only the minimized windows needed for its saved count; Place apps brings back one if none are visible. Undo minimizes those windows again. Windows on another desktop are left alone; switch to that desktop and run again to move them.
 
-### Dictation
+## Dictation
 
 Hold Right ⌥ Option, or any key or combination you choose, speak and release. Dictator turns the recording into text and inserts it in the focused text field when the app allows it. Choose how far Dictator goes: clean up the text, which removes filler words and restores punctuation; polish it, which also fixes grammar and tightens sentences; or skip AI clean-up to keep the speech recognition result, if you prefer. Each dictation on Home shows what was done, and clicking that shows what was heard beside what was typed. This record stays on your Macs. Dictator helps with names and words from your fields, learns corrections, and uses your heard-as spellings. Each dictation is limited to 2 minutes; at the limit, what you said still goes on to transcription and insertion. Start another dictation to keep going.
 
@@ -137,6 +254,4 @@ DICTATOR_ASSET="$PWD/build/Release" ../install.sh
 
 ---
 
-The code is under the [MIT License](LICENSE). The Dictator name, logo and artwork are not covered by it ([details](.github/brand/README.md)). Third-party software and fonts are listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
-
-*Dictator. Voice to Power.* · © 2026 Noam Litt · Jerusalem
+<p align="center">© 2026 Noam Litt · Jerusalem<br>Code under the <a href="LICENSE">MIT License</a>. The Dictator name and artwork are not (<a href=".github/brand/README.md">details</a>). Third-party software and fonts are listed in <a href="THIRD_PARTY_NOTICES.md">THIRD_PARTY_NOTICES.md</a>.</p>
