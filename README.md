@@ -3,11 +3,11 @@
 </p>
 
 <p align="center">
-  <a href="https://noamlitt.com/products/dictator/"><img src="https://img.shields.io/badge/Website-noamlitt.com-F7D917?style=for-the-badge&amp;labelColor=555555" alt="Website: noamlitt.com"></a>
-  <a href="docs/"><img src="https://img.shields.io/badge/Docs-Guides-E63B25?style=for-the-badge&amp;labelColor=555555" alt="Docs: guides"></a>
-  <a href="https://discord.gg/zVk555aYH"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&amp;logo=discord&amp;logoColor=white" alt="Discord community"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-5CA800?style=for-the-badge&amp;labelColor=555555" alt="License: MIT"></a>
-  <a href="https://noamlitt.com/builder"><img src="https://img.shields.io/badge/Built_by-Noam_Litt-7B2CE8?style=for-the-badge&amp;labelColor=555555" alt="Built by Noam Litt"></a>
+  <a href="https://noamlitt.com/products/dictator/"><img src=".github/brand/readme/badges/website.svg" alt="Website: noamlitt.com"></a>
+  <a href="https://github.com/noamlittvock/dictator/tree/main/docs"><img src=".github/brand/readme/badges/docs.svg" alt="Docs: guides"></a>
+  <a href="https://discord.gg/zVk555aYH"><img src=".github/brand/readme/badges/discord.svg" alt="Discord community"></a>
+  <a href="LICENSE"><img src=".github/brand/readme/badges/license.svg" alt="License: MIT"></a>
+  <a href="https://noamlitt.com/builder"><img src=".github/brand/readme/badges/maker.svg" alt="Built by Noam Litt"></a>
 </p>
 
 ```sh
