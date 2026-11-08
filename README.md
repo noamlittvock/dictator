@@ -10,7 +10,7 @@ curl -fsSL https://raw.githubusercontent.com/noamlittvock/dictator/main/install.
 
 <p align="center">Free and open source · MIT · macOS 14+ · Apple silicon</p>
 
-<p align="center"><a href="#what-v1-ships-with">What V.1 ships with</a> · <a href="#your-machine-your-data">Your machine, your data</a> · <a href="#open-source">Open source</a> · <a href="#in-detail">In detail</a></p>
+<p align="center"><a href="#what-v1-ships-with">What V.1 ships with</a> · <a href="#your-machine-your-data">Your machine, your data</a> · <a href="#open-source">Open source</a> · <a href="#in-detail">In detail</a> · <a href="https://discord.gg/zVk555aYH">Join Discord</a></p>
 
 <br>
 
@@ -119,7 +119,7 @@ Task      Find the prompts I keep repeating. For each, draft a slash
 
 Dictator is open source to encourage a community dedicated to exploring and improving human–machine interaction in the emerging new age of hybrid computing with the ultimate goal of unlocking the full power of personalized, intent-driven computing, on the user’s own terms.
 
-**[Read the source](swift-client/)** · **[Open an issue](https://github.com/noamlittvock/dictator/issues/new/choose)** · MIT licensed
+**[Read the source](swift-client/)** · **[Open an issue](https://github.com/noamlittvock/dictator/issues/new/choose)** · **[Join Discord](https://discord.gg/zVk555aYH)** · MIT licensed
 
 <br>
 
